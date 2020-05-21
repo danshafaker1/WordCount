@@ -5,7 +5,6 @@ int main(int argc, char* argv[])
 	char ch;
 	int countc=0;
 	int countw=0;
-	bool temp=true;
 	FILE *fp;
 	fp=fopen(argv[2],"r");
 	if(!strcmp(argv[1],"-c"))
@@ -19,10 +18,15 @@ int main(int argc, char* argv[])
 	}
 	else if(!strcmp(argv[1],"-w"))
 	{
-		while(fgetc(fp)!=EOF)
+		ch=fgetc(fp);
+		while(ch!=EOF)
 		{
-			ch=fgetc(fp);
 			printf("%c",ch);
+			if(ch==' '||ch==',')
+			{
+				countw++;
+			}
+			ch=fgetc(fp);
 		}
 		printf("µ¥´ÊÊýÎª£º%d",countw);
 	 }
