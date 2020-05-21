@@ -24,12 +24,12 @@ int main(int argc, char* argv[])
 		ch=fgetc(fp);
 		while(ch!=EOF)
 		{
-			if(((ch>='a'&&ch<='z')||(ch>='A'&&ch<='Z'))&&(ch2==' '||ch2==',')&&((ch1>='a'&&ch1<='z')||(ch1>='A'&&ch1<='Z'))&&temp==true)
+			if((ch!=' '&&ch!=',')&&(ch2==' '||ch2==',')&&(ch1!=' '&&ch1!=',')&&temp==true)
 			{
 				countw++;
 				temp=false;
 			}
-			if(((ch>='a'&&ch<='z')||(ch>='A'&&ch<='Z'))&&(ch2==' '||ch2==','))
+			if((ch!=' '&&ch!=',')&&(ch2==' '||ch2==','))
 			{
 				countw++;
 			}
