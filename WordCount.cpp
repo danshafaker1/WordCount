@@ -2,9 +2,12 @@
 #include<string.h>
 int main(int argc, char* argv[]) 
 {
-	char ch;
+	char ch=' ';
+	char ch1=' '; 
+	char ch2=' ';
 	int countc=0;
 	int countw=0;
+	bool temp=true;
 	FILE *fp;
 	fp=fopen(argv[2],"r");
 	if(!strcmp(argv[1],"-c"))
@@ -21,13 +24,20 @@ int main(int argc, char* argv[])
 		ch=fgetc(fp);
 		while(ch!=EOF)
 		{
-			printf("%c",ch);
-			if(ch==' '||ch==',')
+			if(((ch>='a'&&ch<='z')||(ch>='A'&&ch<='Z'))&&(ch2==' '||ch2==',')&&((ch1>='a'&&ch1<='z')||(ch1>='A'&&ch1<='Z'))&&temp==true)
+			{
+				countw++;
+				temp=false;
+			}
+			if(((ch>='a'&&ch<='z')||(ch>='A'&&ch<='Z'))&&(ch2==' '||ch2==','))
 			{
 				countw++;
 			}
+			ch1=ch2;
+			ch2=ch;
 			ch=fgetc(fp);
 		}
+		countw--; 
 		printf("µ¥´ÊÊýÎª£º%d",countw);
 	 }
 	 fclose(fp);
